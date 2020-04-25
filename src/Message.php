@@ -19,7 +19,7 @@ class Message extends \Illuminate\Mail\Message
     public function attachDkim($selector, $domain, $privateKey, $passphrase = '')
     {
         $signer = new Swift_Signers_DKIMSigner($privateKey, $domain, $selector, $passphrase);
-        $signer->setHashAlgorithm(config('mail.dkim_algo', 'rsa-sha256'));
+        $signer->setHashAlgorithm(config('mail.dkim_algo'));
         if (config('mail.dkim_identity')) {
             $signer->setSignerIdentity(config('mail.dkim_identity'));
         }
